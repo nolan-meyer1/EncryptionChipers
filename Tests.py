@@ -25,7 +25,37 @@ class CeasarCipherDecryptionTest(unittest.TestCase):
     def test_rightShiftDecryption(self):
         self.assertEqual(EncryptionCiphers.decryptCeasarCipher("Geiwev Gmtliv 123! Xli uymgo fvsar jsb nyqtw sziv xli pedc hsk.",30),"Caesar Cipher 123! The quick brown fox jumps over the lazy dog.","Didn't correctly decrypt")
 
+
+
+class VigenereCipherEncryptionTest(unittest.TestCase):
+
+    def test_aToO(self):
+        self.assertEqual(EncryptionCiphers.vigenereCipher("a","oculorhinolaryngology"),'o',"a was not properly converted to o")
     
+    def test_sampleStringTest(self):
+        self.assertEqual(EncryptionCiphers.vigenereCipher("attacking tonight","oculorhinolaryngology"),"ovnlqbpvt hznzeuz","Sample string was not properly converted")
+    
+    
+    def test_unequalKeySize(self):
+        self.assertEqual(EncryptionCiphers.vigenereCipher("HELLO WORLD","KEY"),"RIJVS UYVJN","Does not work when key is not greater than or equal to the size of the string")
+
+class VigenereCipherDecryptionTest(unittest.TestCase):
+
+    def test_aToO(self):
+        self.assertEqual(EncryptionCiphers.decryptVigenereCipher("o","oculorhinolaryngology"),'a',"o was not properly converted to a")
+    
+    def test_sampleStringTest(self):
+        self.assertEqual(EncryptionCiphers.decryptVigenereCipher("ovnlqbpvt hznzeuz","oculorhinolaryngology"),"attacking tonight","Sample string was not properly converted")
+
+    def test_unequalKeySize(self):
+        self.assertEqual(EncryptionCiphers.decryptVigenereCipher("RIJVS UYVJN","KEY"),"HELLO WORLD","Does not work when key is not greater than or equal to the size of the string")
+    
+    
+
+class LengthenKeyTest(unittest.TestCase):
+
+    def test_lengthenKeyTest(self):
+        self.assertEqual(EncryptionCiphers.lengthenKey("KEY",10),"KEYKEYKEYK","Key did not get properly lengthened")
 
 
 if __name__ == '__main__':

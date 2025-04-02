@@ -46,8 +46,106 @@ def decryptCeasarCipher(string, shift):
 def substituionCipher():
     pass
 
-def vignereCipher():
-    pass
+def vigenereCipher(string,key):
+    """
+    This is the vignere cipher. This works by giving a string and key.
+    If they key is not the same length as the string it will then repeat 
+    the key until it is the same length. After that it will look at each
+    character in the string and compare it with each character in the key. 
+    It will shift the string based off what position the same element in the
+    key is in the alphabet. 
+    """
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    output = []
+    keyIndex = 0
+    keyLength = getLength(key)
+    stringLength = getLength(string)
+
+    if keyLength != stringLength:
+        key = lengthenKey(key,stringLength)
+
+    for character in string:
+
+        if character.isalpha():
+            shiftedIndex = (alphabet.index(character.lower()) + alphabet.index(key[keyIndex].lower())) % 26
+
+            if character.isupper():
+
+                output.append(alphabet[shiftedIndex].upper())
+            else:
+                output.append(alphabet[shiftedIndex])
+            
+            keyIndex += 1
+    
+        else:
+            output.append(character)
+    
+    return "".join(output)
+
+def decryptVigenereCipher(string,key):
+    """
+    This method does the opposite of the vigenere encryption cipher
+    """
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    output = []
+    keyIndex = 0
+    keyLength = getLength(key)
+    stringLength = getLength(string)
+
+    if keyLength != stringLength:
+        key = lengthenKey(key,stringLength)
+
+    for character in string:
+
+        if character.isalpha():
+            shiftedIndex = (alphabet.index(character.lower()) - alphabet.index(key[keyIndex].lower())) % 26
+
+            if character.isupper():
+
+                output.append(alphabet[shiftedIndex].upper())
+            else:
+                output.append(alphabet[shiftedIndex])
+            
+            keyIndex += 1
+    
+        else:
+            output.append(character)
+    
+    return "".join(output)
+
+
+def getLength(string):
+    """
+    This method is used to get the length of a string
+    not account for spaces.
+    """
+    length = 0
+
+    for character in string:
+
+        if character != " ":
+            length += 1
+        
+    return length
+
+def lengthenKey(key,length):
+
+    output = [key]
+    keyLength = getLength(key)
+    difference = length - keyLength
+    keyPosition = 0
+
+    for i in range(difference):
+        output.append(key[keyPosition])
+        keyPosition += 1
+
+        if keyPosition >= keyLength:
+            keyPosition = 0
+    
+    return "".join(output)
+
+
+
 
 def enigmaCipher():
     pass
