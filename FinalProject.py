@@ -8,7 +8,7 @@ Enigma Cipher: https://en.wikipedia.org/wiki/Enigma_machine
 
 """
 
-def ceaserCipher(string, shift):
+def ceasarCipher(string, shift):
     """
     This function takes in a string that will be encrypted and the shift that you want to do.
     If you give it a negative number it's a left shift. If you give it a positive number it 
@@ -35,11 +35,11 @@ def ceaserCipher(string, shift):
     return "".join(output)
 
 
-def decryptCeaserCipher(string,shift):
+def decryptCeasarCipher(string, shift):
     """
-    This method handles the decryption of the ceaser cipher. You will have to give it the shift as well as string you want to decrpyt.
+    This method handles the decryption of the ceaser cipher. You will have to give it the shift as well as the string you want to decrypt.
     """
-    pass
+    return ceasarCipher(string,-shift)
 
 
 
@@ -51,3 +51,11 @@ def vignereCipher():
 
 def enigmaCipher():
     pass
+
+
+def main():
+    
+    print(ceasarCipher("Caesar Cipher 123! The quick brown fox jumps over the lazy dog.",30))
+    print(decryptCeasarCipher("Geiwev Gmtliv 123! Xli uymgo fvsar jsb nyqtw sziv xli pedc hsk.",30))
+
+main()
