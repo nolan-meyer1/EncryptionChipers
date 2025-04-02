@@ -37,10 +37,10 @@ def ceasarCipher(string, shift):
 
 def decryptCeasarCipher(string, shift):
     """
-    This method handles the decryption of the ceaser cipher. You will have to give it the shift as well as the string you want to decrypt.
+    This method handles the decryption of the ceaser cipher. You will have to give it the shift as well as the string you want to decrypt
+    This works by using the original ceasar cipher method but using the opposite of it's shift. 
     """
     return ceasarCipher(string,-shift)
-
 
 
 def substituionCipher():
@@ -51,11 +51,3 @@ def vignereCipher():
 
 def enigmaCipher():
     pass
-
-
-def main():
-    
-    print(ceasarCipher("Caesar Cipher 123! The quick brown fox jumps over the lazy dog.",30))
-    print(decryptCeasarCipher("Geiwev Gmtliv 123! Xli uymgo fvsar jsb nyqtw sziv xli pedc hsk.",30))
-
-main()
