@@ -4,7 +4,6 @@ Module that contains popular encryption ciphers
 Ceaser Cipher: https://en.wikipedia.org/wiki/Caesar_cipher
 Substiution Cipher: https://en.wikipedia.org/wiki/Substitution_cipher
 Viginere Cipher: https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
-Enigma Cipher: https://en.wikipedia.org/wiki/Enigma_machine
 
 """
 
@@ -129,6 +128,11 @@ def getLength(string):
     return length
 
 def lengthenKey(key,length):
+    """
+    This is used for the vigenere chipher. if the key isn't long
+    enough it makes the key the length of the string by repeating 
+    the key.
+    """
 
     output = [key]
     keyLength = getLength(key)
