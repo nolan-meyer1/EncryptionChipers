@@ -1,3 +1,5 @@
+import string
+import random
 """
 Module that contains popular encryption ciphers
 
@@ -148,8 +150,49 @@ def lengthenKey(key,length):
     
     return "".join(output)
 
+def generateKey(length):
+    """
+    This method generates a random key. It looks at the alphabet 
+    and builds a string of random choices from the alphabet. 
+    """
+    return "".join(random.choices(string.ascii_letters + string.digits + string.punctuation,k=length))
+
+
+def xorCipher(string):
+    """
+    Cipher that does generates a random key based off the
+    length of the string. Then it does xor on the each
+    character of the encrypted key to each character on the
+    cipher.
+    """
+    encryptionKey = generateKey(len(string))
+    output = []
+
+    for i in range(len(string)):
+
+        output.append(bin(ord(string[i]) ^ ord(encryptionKey[i]))[2:].zfill(8))
+    
+
+    with open("Encrypted.txt","w") as file:
+        file.write(" ".join(output))
+    
+    return encryptionKey
 
 
 
-def enigmaCipher():
-    pass
+def decryptXorCipher(encryptionKey):
+    """
+    This handles the decryption of the encryption file that will be generated.
+    """
+
+    output = []
+    
+    with open("Encrypted.txt","r") as file:
+        encryptedString = file.readline().split(" ")
+        print(encryptedString)
+
+        for i in range(len(encryptedString)):
+
+            output.append(chr(int(encryptedString[i],2) ^ ord(encryptionKey[i])))
+    
+    return "".join(output)

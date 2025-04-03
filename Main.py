@@ -81,6 +81,9 @@ def vigenereCipherMenu():
 
 
 def isNumber(number):
+    """
+    Used to verify if a string of numbers is a digit or not.
+    """
 
     output = True
 
@@ -90,6 +93,37 @@ def isNumber(number):
         output = False
     
     return output
+
+def xorCipherMenu():
+
+    keepGoing = True
+
+    while keepGoing:
+        print()
+        print("XOR Cipher:")
+        print("0. Quit")
+        print("1. Encrypt Message")
+        print("2. Decrypt Message")
+        userInput = input("Please select an option: ")
+
+        if userInput == "0":
+            keepGoing = False
+
+        elif userInput == "1":
+            stringToBeEncrytped = input("Please enter string you want to be encrypted: ")
+            encryptionKey = EncryptionCiphers.xorCipher(stringToBeEncrytped)
+
+            print(f"Please save this key to decrypt encryption file: {encryptionKey}")
+
+        elif userInput == "2":
+            encryptionKey = input("Please enter the ecryption key: ")
+
+            decryptedString = EncryptionCiphers.decryptXorCipher(encryptionKey)
+            print()
+            print(f"Decrypted String: {decryptedString}")
+
+        else:
+            print("Please enter a valid response!")
 
 
 
@@ -102,6 +136,7 @@ def main():
         print("0. Quit")
         print("1. Ceaser Cipher")
         print("2. Vigenere Cipher")
+        print("3. XOR Cipher")
         userInput = input("Please enter an option: ")
 
         if userInput == "0":
@@ -110,6 +145,8 @@ def main():
             ceaserCipherMenu()
         elif userInput == "2":
             vigenereCipherMenu()
+        elif userInput == "3":
+            xorCipherMenu()
         else:
             print("Please enter a valid response!")
         
