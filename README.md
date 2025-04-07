@@ -1,5 +1,6 @@
 # EncryptionChipers
-This project contains some very simple encryption algorithims. It contains the Ceaser Cipher, Vigenere Cipher, and XOR Cipher. 
+This project contains some very simple encryption algorithims. It contains the Ceaser Cipher, Vigenere Cipher, and XOR Cipher. Run the Menu.py
+file to try some of them out! 
 
 ## Ceaser Cipher
 This is one of the most simple and classic ciphers but it's pretty cool. The way this is done is by shifting each character in
