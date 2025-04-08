@@ -237,7 +237,7 @@ def encryptUsingRSA(stringToEncrypt,publicKey):
         output.append(bin(pow(convertedCharacter,publicKey[1],publicKey[0]))[2:])
     
     with open("Encrypted.txt","w") as file:
-        file.write(" ".join(output))
+        file.write("\n".join(output))
 
 
 def decryptUsingRSA(privateKey):
@@ -249,10 +249,9 @@ def decryptUsingRSA(privateKey):
     output = []
 
     with open("Encrypted.txt","r") as file:
-        binaryStrings = file.readline().split(" ")
 
-        for binaryString in binaryStrings:
-            output.append(chr(pow(int(binaryString,2),privateKey[1],privateKey[0])))
+        for line in file:
+            output.append(chr(pow(int(line,2),privateKey[1],privateKey[0])))
         
     return "".join(output)
 
