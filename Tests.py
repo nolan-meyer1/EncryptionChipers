@@ -77,17 +77,15 @@ class GetRsaEncryptionKeysTest(unittest.TestCase):
         self.assertEqual(EncryptionCiphers.getRsaEncryptionKeys(),((3233,17),(3233,413)),"Did not generate the correct keys")
 
 
-class EncryptUsingRSATest(unittest.TestCase):
+class RSATest(unittest.TestCase):
 
-    def test_encryptUsingRsaTest(self):
-        self.assertEqual(EncryptionCiphers.encryptUsingRSA("a",(3233,17)),"11001100000","Did not properly encrypt")
-
-
-class DecryptUsingRSATest(unittest.TestCase):
-
-    def test_decryptUsingRsaTest(self):
-        self.assertEqual(EncryptionCiphers.decryptUsingRSA("11001100000",(3233,413)),"a","Did not decrypt correctly")
-
+    def test_encryptAndDecryptUsingRsaTest(self):
+        EncryptionCiphers.encryptUsingRSA("a",(3233,17))
+        self.assertEqual(EncryptionCiphers.decryptUsingRSA((3233,413)),"a","Did not decrypt correctly")
+    
+    def test_complextEncryptAndDecryptUsingRsaTest(self):
+        EncryptionCiphers.encryptUsingRSA("Hello Nolan",(3233,17))
+        self.assertEqual(EncryptionCiphers.decryptUsingRSA((3233,413)),"Hello Nolan","Did not decrypt correctly")
 
 
 if __name__ == '__main__':

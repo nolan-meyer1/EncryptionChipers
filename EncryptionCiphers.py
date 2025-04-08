@@ -236,16 +236,25 @@ def encryptUsingRSA(stringToEncrypt,publicKey):
         convertedCharacter = ord(character)
         output.append(bin(pow(convertedCharacter,publicKey[1],publicKey[0]))[2:])
     
-    return "".join(output)
+    with open("Encrypted.txt","w") as file:
+        file.write(" ".join(output))
 
 
-def decryptUsingRSA(stringToDecrypt,privateKey):
+def decryptUsingRSA(privateKey):
     """
     Uses the private key to decrypt using the
     modular inverse
     """
-    
-    return chr(pow(int(stringToDecrypt,2),privateKey[1],privateKey[0]))
+
+    output = []
+
+    with open("Encrypted.txt","r") as file:
+        binaryStrings = file.readline().split(" ")
+
+        for binaryString in binaryStrings:
+            output.append(chr(pow(int(binaryString,2),privateKey[1],privateKey[0])))
+        
+    return "".join(output)
 
 
 
