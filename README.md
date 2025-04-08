@@ -39,3 +39,8 @@ xor j: 0110 1010
 ## Rivest–Shamir–Adleman(RSA) Cryptosystem
 This is a more complex algorithim. It starts off the calculation by generating two large primes p and q. 
 
+EX from [Wikipedia](https://en.wikipedia.org/wiki/RSA_cryptosystem)
+<img width="693" alt="Screenshot 2025-04-07 at 2 57 01 PM" src="https://github.com/user-attachments/assets/faa372f1-e25f-4b46-86c1-9a240d8a92e8" />
+
+
+
