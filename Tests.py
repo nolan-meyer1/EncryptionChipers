@@ -71,11 +71,6 @@ class LeastCommonMultipleTest(unittest.TestCase):
         self.assertEqual(EncryptionCiphers.lcm(60,52),780,"Did not generate the correct lcm")
 
 
-class GetRsaEncryptionKeysTest(unittest.TestCase):
-    
-    def test_getEncryptionKeys(self):
-        self.assertEqual(EncryptionCiphers.getRsaEncryptionKeys(),((3233,17),(3233,413)),"Did not generate the correct keys")
-
 
 class RSATest(unittest.TestCase):
 

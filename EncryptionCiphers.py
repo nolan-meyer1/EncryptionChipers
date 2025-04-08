@@ -1,5 +1,6 @@
 import string
 import random
+from sympy import randprime
 """
 Module that contains popular encryption ciphers
 
@@ -211,23 +212,31 @@ def getRsaEncryptionKeys():
     Method that returns a tuple of this strucutre
     ((Public key),(Private Key))
     """
-    p = 61
-    q = 53
+    p = randprime(2**1023, 2**1024)
+    q = randprime(2**1023, 2**1024)
 
     n = p * q
     lambdaSymbol = lcm(p-1,q-1)
 
-    e = 17
+    e = generateCoPrime(lambdaSymbol)
 
     d = pow(e,-1,lambdaSymbol)
 
-    return ((n,e),(n,d))
+    with open("PublicKey.txt","w") as file:
+        file.write(f"{n}\n")
+        file.write(f"{e}")
+    
+    with open("PrivateKey.txt","w") as file:
+        file.write(f"{n}\n")
+        file.write(f"{d}")
+
+
 
 def encryptUsingRSA(stringToEncrypt,publicKey):
     """
-    Uses the public key to decrypt using the
-    modular inverse
-    """
+    Uses the public key to encrypt a string using
+    modular exponentiation.
+    """ 
 
     output = []
 
@@ -254,6 +263,20 @@ def decryptUsingRSA(privateKey):
             output.append(chr(pow(int(line,2),privateKey[1],privateKey[0])))
         
     return "".join(output)
+
+
+
+def generateCoPrime(lambdaSymbol):
+    """
+    Generates a co-prime number between 0 and
+    the lamba symbol. This
+    """
+    coprime = 0
+
+    while  gcd(coprime, lambdaSymbol) != 1:
+        coprime = randprime(0,lambdaSymbol)
+    
+    return coprime
 
 
 

@@ -94,6 +94,8 @@ def isNumber(number):
     
     return output
 
+
+
 def xorCipherMenu():
 
     keepGoing = True
@@ -127,6 +129,61 @@ def xorCipherMenu():
 
 
 
+def rsaMenu():
+
+    keepGoing = True
+
+    while keepGoing:
+        print()
+        print("RSA Encryption:")
+        print("0. Quit")
+        print("1. Get Encryption/Decryption Keys: ")
+        print("2. Encrypt Message")
+        print("3. Decrypt Message")
+        userInput = input("Please select an option: ")
+
+        if userInput == "0":
+            keepGoing = False
+
+        elif userInput == "1":
+            EncryptionCiphers.getRsaEncryptionKeys()
+            print("Encryption Keys written to PublicKey.txt and PrivateKey.txt")
+            print("Each part seperate by a newline")
+
+        elif userInput == "2":
+            try:
+                with open("PublicKey.txt","r") as file:
+                    part1 = int(file.readline())
+                    part2 = int(file.readline())
+                    key = (part1,part2)
+
+                message = input("Please enter the message you want to encrypt: ")
+                print()
+                EncryptionCiphers.encryptUsingRSA(message,key)
+                print("Succesfully encrypted to Encrypted.txt!")
+            except:
+                print("Should be a number!")
+        
+        elif userInput == "3":
+            try:
+                with open("PrivateKey.txt","r") as file:
+                    part1 = int(file.readline())
+                    part2 = int(file.readline())
+                    key = (part1,part2)
+                print(f"Decrypted Message: {EncryptionCiphers.decryptUsingRSA((part1,part2))}")
+            except:
+                print("Should be a number")
+
+        else:
+            print("Please enter a valid response!")
+
+    
+
+
+
+
+
+
 def main():
 
     keepGoing = True
@@ -137,6 +194,7 @@ def main():
         print("1. Ceaser Cipher")
         print("2. Vigenere Cipher")
         print("3. XOR Cipher")
+        print("4. RSA Encryption")
         userInput = input("Please enter an option: ")
 
         if userInput == "0":
@@ -147,6 +205,8 @@ def main():
             vigenereCipherMenu()
         elif userInput == "3":
             xorCipherMenu()
+        elif userInput == "4":
+            rsaMenu()
         else:
             print("Please enter a valid response!")
 
