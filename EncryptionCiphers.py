@@ -9,6 +9,8 @@ Viginere Cipher: https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
 
 """
 
+
+
 def ceasarCipher(string, shift):
     """
     This function takes in a string that will be encrypted and the shift that you want to do.
@@ -36,6 +38,7 @@ def ceasarCipher(string, shift):
     return "".join(output)
 
 
+
 def decryptCeasarCipher(string, shift):
     """
     This method handles the decryption of the ceaser cipher. You will have to give it the shift as well as the string you want to decrypt
@@ -44,8 +47,6 @@ def decryptCeasarCipher(string, shift):
     return ceasarCipher(string,-shift)
 
 
-def substituionCipher():
-    pass
 
 def vigenereCipher(string,key):
     """
@@ -83,6 +84,8 @@ def vigenereCipher(string,key):
     
     return "".join(output)
 
+
+
 def decryptVigenereCipher(string,key):
     """
     This method does the opposite of the vigenere encryption cipher
@@ -115,6 +118,7 @@ def decryptVigenereCipher(string,key):
     return "".join(output)
 
 
+
 def getLength(string):
     """
     This method is used to get the length of a string
@@ -127,7 +131,10 @@ def getLength(string):
         if character != " ":
             length += 1
         
+
     return length
+
+
 
 def lengthenKey(key,length):
     """
@@ -150,12 +157,15 @@ def lengthenKey(key,length):
     
     return "".join(output)
 
+
+
 def generateKey(length):
     """
     This method generates a random key. It looks at the alphabet 
     and builds a string of random choices from the alphabet. 
     """
     return "".join(random.choices(string.ascii_letters + string.digits + string.punctuation,k=length))
+
 
 
 def xorCipher(string):
@@ -189,10 +199,69 @@ def decryptXorCipher(encryptionKey):
     
     with open("Encrypted.txt","r") as file:
         encryptedString = file.readline().split(" ")
-        print(encryptedString)
 
         for i in range(len(encryptedString)):
 
             output.append(chr(int(encryptedString[i],2) ^ ord(encryptionKey[i])))
     
     return "".join(output)
+
+def getRsaEncryptionKeys():
+    """
+    Method that returns a tuple of this strucutre
+    ((Public key),(Private Key))
+    """
+    p = 61
+    q = 53
+
+    n = p * q
+    lambdaSymbol = lcm(p-1,q-1)
+
+    e = 17
+
+    d = pow(e,-1,lambdaSymbol)
+
+    return ((n,e),(n,d))
+
+def encryptUsingRSA(stringToEncrypt,publicKey):
+    """
+    Uses the public key to decrypt using the
+    modular inverse
+    """
+
+    output = []
+
+    for character in stringToEncrypt:
+
+        convertedCharacter = ord(character)
+        output.append(bin(pow(convertedCharacter,publicKey[1],publicKey[0]))[2:])
+    
+    return "".join(output)
+
+
+def decryptUsingRSA(stringToDecrypt,privateKey):
+    """
+    Uses the private key to decrypt using the
+    modular inverse
+    """
+    
+    return chr(pow(int(stringToDecrypt,2),privateKey[1],privateKey[0]))
+
+
+
+def lcm(a,b):
+    """
+    Finds the least common multiple
+    """
+    return (a * b) // gcd(a,b)
+
+def gcd(a,b):
+    """
+    Finds the greatest common divsor
+    """
+
+    while b:
+
+        a,b = b, a % b
+
+    return a

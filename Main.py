@@ -149,5 +149,6 @@ def main():
             xorCipherMenu()
         else:
             print("Please enter a valid response!")
-        
-main()
+
+if __name__ == "__main__":        
+    main()
