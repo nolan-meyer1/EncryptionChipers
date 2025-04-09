@@ -37,11 +37,50 @@ xor j: 0110 1010
 ```
 
 ## Rivest–Shamir–Adleman(RSA) Cryptosystem
-This is a more complex algorithim. It starts off the calculation by generating two large primes p and q. 
+This is a more complex algorithim. It starts off the calculation by generating two large primes p and q. I used the python module [sympy](https://www.sympy.org/en/index.html)
+to accomplish this. After that you want to compute n = p * q which is the modulus for both the public and private key. Next you want to compute λ(n) = lcm(p-1,q-1). After λ(n) is
+computed you want to generate a coprime e between 0 < e < λ(n). Lastly, you want to find d which is the modular multiplicative inverse of e(mod(λ(n))).
+* Public Key (n,e)
+* Private Key (n,d)
 
 EX from [Wikipedia](https://en.wikipedia.org/wiki/RSA_cryptosystem)
-<img width="963" alt="Screenshot 2025-04-08 at 2 43 09 PM" src="https://github.com/user-attachments/assets/93b01bd1-a41e-4b7d-89a0-25448f2d060e" />
+<img width="965" alt="Screenshot 2025-04-09 at 10 33 54 AM" src="https://github.com/user-attachments/assets/60ea5b76-e601-4864-9b2a-a8b34c76834d" />
+
+### Encryption/Decryption Further Explanation
+Let's say for example I have these values:
+* String to encrypt: "Hello Nolan"
+* Public Key: (3233,17)
+* Private Key: (3233,413)
+
+RSA encryption works by giving someone else the public key so they can send you encrypted messages while you keep the private key private so only you can decrypt the message. This is
+called asymetric encryption because you use two different keys for encryption and decryption. Let's start by encrypting the letter "H". We start by getting the ASCII value for "H" which is 72. We then do the calculation:
+
+c(m) = m<sup>e</sup> % n 
+
+72<sup>17</sup> % 3233 = 3000
+
+This is a really long number. You can just use this number or you could convert it to binary if you would like. This is just for one character. We will then repeat the process over and over for each character resulting in the full encryption on the string looking something like this: 
 
 
+| Character| Integer | Binary |
+|---------|--------|-----------|
+|H|3000|10100100001|
+|e|1313|10100100001|
+|l|745|100010001001|
+|l|745|100010001001|
+|o|1992|11111001000|
+|N|3165|100010001001|
+|o|2185|100010001001|
+|l|745|100010001001|
+|a|1632|11001100000|
+|n|2235|100010111011|
+
+To decrypt we use the same formula but with the different numbers:
+
+m(c) = m<sup>d</sup> % n 
+
+3000<sup>413</sup> % 3233 = 72
+
+After you have the original ASCII value you can then convert that back to a character. We will then complete this process for every character until the string is decrypted.
 
 
