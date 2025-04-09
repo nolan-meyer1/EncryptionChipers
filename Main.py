@@ -43,6 +43,7 @@ def ceaserCipherMenu():
             print("Please enter a valid response!")
 
 
+
 def vigenereCipherMenu():
 
     keepGoing = True
@@ -176,12 +177,7 @@ def rsaMenu():
 
         else:
             print("Please enter a valid response!")
-
     
-
-
-
-
 
 
 def main():

@@ -89,7 +89,7 @@ def vigenereCipher(string,key):
 
 def decryptVigenereCipher(string,key):
     """
-    This method does the opposite of the vigenere encryption cipher
+    This function does the opposite of the vigenere encryption cipher
     """
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     output = []
@@ -122,7 +122,7 @@ def decryptVigenereCipher(string,key):
 
 def getLength(string):
     """
-    This method is used to get the length of a string
+    This function is used to get the length of a string
     not account for spaces.
     """
     length = 0
@@ -210,7 +210,10 @@ def decryptXorCipher(encryptionKey):
 def getRsaEncryptionKeys():
     """
     Method that returns a tuple of this strucutre
-    ((Public key),(Private Key))
+    ((Public key),(Private Key)). It does this
+    by generating two large prime numbers. It then
+    does calculations wit those prime numbers to 
+    generate the public and private key
     """
     p = randprime(2**1023, 2**1024)
     q = randprime(2**1023, 2**1024)
@@ -235,7 +238,8 @@ def getRsaEncryptionKeys():
 def encryptUsingRSA(stringToEncrypt,publicKey):
     """
     Uses the public key to encrypt a string using
-    modular exponentiation.
+    modular exponentiation. It will convert it to
+    binary and store it in the Encrypted.Txt.
     """ 
 
     output = []
@@ -252,7 +256,8 @@ def encryptUsingRSA(stringToEncrypt,publicKey):
 def decryptUsingRSA(privateKey):
     """
     Uses the private key to decrypt using the
-    modular inverse
+    modular inverse. It will look for a file
+    called Encrytped.txt to decrypt
     """
 
     output = []
@@ -285,6 +290,8 @@ def lcm(a,b):
     Finds the least common multiple
     """
     return (a * b) // gcd(a,b)
+
+
 
 def gcd(a,b):
     """
