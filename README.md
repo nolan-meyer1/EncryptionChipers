@@ -76,11 +76,13 @@ This is a really long number. You can just use this number or you could convert 
 |a|1632|11001100000|
 |n|2235|100010111011|
 
-To decrypt we use the same formula but with the different numbers:
+To decrypt we use the same formula but with the different numbers. If the number was stored as binary you will want to convert it back to it's decimal. If it's a decimal then you can do the conversion like so:
 
 m(c) = m<sup>d</sup> % n 
 
 3000<sup>413</sup> % 3233 = 72
+
+The reason this works is becasue we found that multiplicative inverse which essentially allows to reverse the encryption that we just did. 
 
 After you have the original ASCII value you can then convert that back to a character. We will then complete this process for every character until the string is decrypted.
 
