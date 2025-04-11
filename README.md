@@ -13,9 +13,9 @@ the string you're trying to encrypt so many spaces over right or left in the alp
 The Vigenere Cipher is similar to the ceaser cipher. With this algorithim you can create your own custom encryption key. It's crucial
 that encryption key is the same length of the string that you're trying to encrypt. If not you'll want to repeat the key at the end or
 just cycle back to the beginning once you get to the end of the key. In my code I made a method to handle this but if you want you could
-just cycle back to the beginning of the encryption key string.Once you ahve your key you will shift the string that you're trying
-to encrypt based off how many spaces the key is. For example if I have the key "kllked" and the string "hello". I would shift "h" over
-over 11 spaces because 'k' is the 11th letter in the alphabet. The corresponding letter would then be 'R' as shown on the table:
+just cycle back to the beginning of the encryption key string. Once you have your key you will shift the string that you're trying to encrypt 
+based off how what position the character is in the alphabet in the key. For example if I have the key "kllked" and the string "hello". 
+I would shift "h" over 11 spaces because 'k' is the 11th letter in the alphabet. The corresponding letter would then be 'R' as shown on the table:
 ![image](https://github.com/user-attachments/assets/00a1bb7c-a708-46f0-b700-03a53d5da099)
 
 ## XOR Cipher
