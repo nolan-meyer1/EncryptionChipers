@@ -219,11 +219,11 @@ def getRsaEncryptionKeys():
     q = randprime(2**1023, 2**1024)
 
     n = p * q
-    lambdaSymbol = lcm(p-1,q-1)
+    λ = lcm(p-1,q-1)
 
-    e = generateCoPrime(lambdaSymbol)
+    e = generateCoPrime(λ)
 
-    d = pow(e,-1,lambdaSymbol)
+    d = pow(e,-1,λ)
 
     with open("PublicKey.txt","w") as file:
         file.write(f"{n}\n")
@@ -271,15 +271,15 @@ def decryptUsingRSA(privateKey):
 
 
 
-def generateCoPrime(lambdaSymbol):
+def generateCoPrime(λ):
     """
     Generates a co-prime number between 0 and
     the lamba symbol. This
     """
     coprime = 0
 
-    while  gcd(coprime, lambdaSymbol) != 1:
-        coprime = randprime(0,lambdaSymbol)
+    while  gcd(coprime, λ) != 1:
+        coprime = randprime(0,λ)
     
     return coprime
 
