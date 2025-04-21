@@ -1,5 +1,5 @@
 # EncryptionChipers
-This project contains some very simple encryption algorithims. It contains the Ceaser Cipher, Vigenere Cipher, and XOR Cipher. Run the Menu.py
+This project contains some very simple encryption algorithims. It contains the Ceaser Cipher, Vigenere Cipher,XOR Cipher, and RSA. Run the Menu.py
 file to try some of them out! 
 
 ## Ceaser Cipher
@@ -40,7 +40,8 @@ xor j: 0110 1010
 ## Rivest–Shamir–Adleman(RSA) Cryptosystem
 This is a more complex algorithim. It starts off the calculation by generating two large primes p and q. I used the python module [sympy](https://www.sympy.org/en/index.html)
 to accomplish this. After that you want to compute n = p * q which is the modulus for both the public and private key. Next you want to compute λ(n) = lcm(p-1,q-1). After λ(n) is
-computed you want to generate a coprime e between 0 < e < λ(n). Lastly, you want to find d which is the modular multiplicative inverse of e(mod(λ(n))).
+computed you want to generate a coprime e between 0 < e < λ(n). Lastly, you want to find d which is the modular multiplicative inverse of e(mod(λ(n))). This is the critical value that is
+used to reverse the encryption. 
 * Public Key (n,e)
 * Private Key (n,d)
 
