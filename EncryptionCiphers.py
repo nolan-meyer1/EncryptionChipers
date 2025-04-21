@@ -7,7 +7,7 @@ Module that contains popular encryption ciphers
 Ceaser Cipher: https://en.wikipedia.org/wiki/Caesar_cipher
 Substiution Cipher: https://en.wikipedia.org/wiki/Substitution_cipher
 Viginere Cipher: https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
-
+RSA Encryption: https://en.wikipedia.org/wiki/RSA_cryptosystem
 """
 
 
@@ -207,6 +207,8 @@ def decryptXorCipher(encryptionKey):
     
     return "".join(output)
 
+
+
 def getRsaEncryptionKeys():
     """
     Method that returns a tuple of this strucutre
@@ -253,6 +255,7 @@ def encryptUsingRSA(stringToEncrypt,publicKey):
         file.write("\n".join(output))
 
 
+
 def decryptUsingRSA(privateKey):
     """
     Uses the private key to decrypt using the
@@ -278,7 +281,7 @@ def generateCoPrime(λ):
     """
     coprime = 0
 
-    while  gcd(coprime, λ) != 1:
+    while gcd(coprime, λ) != 1:
         coprime = randprime(0,λ)
     
     return coprime
