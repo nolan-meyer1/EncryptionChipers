@@ -185,7 +185,7 @@ def main():
     keepGoing = True
 
     while keepGoing:
-
+        print()
         print("0. Quit")
         print("1. Ceaser Cipher")
         print("2. Vigenere Cipher")
