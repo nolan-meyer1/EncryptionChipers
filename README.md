@@ -1,6 +1,6 @@
 # EncryptionChipers
 This project contains some very simple encryption algorithims. It contains the Ceaser Cipher, Vigenere Cipher,XOR Cipher, and RSA. Run the Menu.py
-file to try some of them out! 
+file to try some of them out! The program reads and writes to some some files so it might be helpful to have those open so you can see what's happening! 
 
 ## Ceaser Cipher
 This is one of the most simple and classic ciphers but it's pretty cool. The way this is done is by shifting each character in
